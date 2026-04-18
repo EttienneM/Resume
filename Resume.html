@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ettienne Mans — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;800;900&family=Figtree:ital,wght@0,400;0,500;0,600;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* warm-tinted paper palette; neutrals nudged toward hue 55 for cohesion */
+    --bg:         oklch(99% 0.004 55);
+    --bg-2:       oklch(96% 0.005 55);
+    --ink:        oklch(18% 0.006 55);
+    --ink-2:      oklch(26% 0.006 55);
+    --ink-3:      oklch(52% 0.005 55);
+    --line:       oklch(18% 0.006 55);
+    --line-soft:  oklch(91% 0.005 55);
+    --accent:     oklch(58% 0.16  55);   /* rare — borders, backgrounds, large display text */
+    --accent-ink: oklch(45% 0.14  55);   /* text-safe accent — passes AA on paper bg */
+    --card:       oklch(99% 0.004 55);
+    --card-w:     230px;
+
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+    --font-display: "Big Shoulders Display", "Archivo Narrow", ui-sans-serif, system-ui, sans-serif;
+    --font-body:    "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+    /* ── type scale (rem; 1rem = 16px default) ─── */
+    --text-3xs:    0.6875rem;                    /* 11px — axis ticks, kbd, portrait tag */
+    --text-2xs:    0.75rem;                      /* 12px — caption, meta, chip */
+    --text-xs:     0.875rem;                     /* 14px — small body, bullets, card desc */
+    --text-sm:     1rem;                         /* 16px — body reading text */
+    --text-md:     1.125rem;                     /* 18px — card titles */
+    --text-lg:     clamp(1.25rem, 2vw, 1.5rem);  /* 20-24 — footer subheads */
+    --text-xl:     clamp(1.5rem, 2.4vw, 1.875rem); /* 24-30 — section labels */
+    --text-2xl:    clamp(1.75rem, 3vw, 2.25rem);  /* 28-36 — detail h2 */
+    --text-display: clamp(3rem, 7.5vw, 6rem);    /* 48-96 — name */
+  }
+
+  /* defensive type hygiene */
+  html { font-synthesis-weight: none; font-synthesis-style: none; text-rendering: optimizeLegibility; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { min-height: 100vh; overflow-x: hidden; }
+
+  .app {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 48px 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto;
+    gap: 28px;
+    min-height: 100vh;
+  }
+  .app > * { min-width: 0; }
+
+  /* ── header / quarter 1 ──────────────────────────── */
+  .header {
+    padding-bottom: 20px;
+  }
+  .header-main {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex: 1;
+  }
+  .id { display: flex; flex-direction: column; gap: 0; flex: 1; }
+
+  .portrait {
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--bg-2);
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: var(--text-display);
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    max-width: 60ch;
+  }
+  .name .name-tagline {
+    font-weight: 400;
+  }
+  .name em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .role {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--ink-2);
+    max-width: 65ch;
+    line-height: 1.55;
+    text-wrap: pretty;
+    margin: 0;
+  }
+  .role em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent-ink);
+  }
+
+  /* ── timeline header ─────────────────────────────── */
+  .timeline-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .hint {
+    font-family: var(--font-body);
+    font-size: var(--text-2xs);
+    color: var(--ink-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .hint .kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
+    background: var(--bg);
+    font-size: var(--text-3xs);
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── timeline ────────────────────────────────────── */
+  .timeline-wrap { position: relative; }
+  .timeline {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 0 22px;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  .timeline.dragging { cursor: grabbing; user-select: none; }
+  .timeline::-webkit-scrollbar { height: 8px; }
+  .timeline::-webkit-scrollbar-track { background: transparent; }
+  .timeline::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+
+  .track {
+    position: relative;
+    height: 380px;
+    padding: 0 48px;
+    display: inline-block;
+    min-width: 100%;
+  }
+
+  .spine {
+    position: absolute;
+    left: 48px;
+    right: 48px;
+    top: 190px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .spine::before, .spine::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--ink);
+  }
+  .spine::before { left: -3px; }
+  .spine::after  { right: -3px; }
+
+  .year-grid {
+    position: absolute;
+    left: 48px; right: 48px;
+    top: 190px;
+    height: 12px;
+    pointer-events: none;
+  }
+  .year-tick {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .year-tick span { width: 1px; height: 4px; background: var(--line); }
+  .year-tick b {
+    font-family: var(--font-body);
+    font-size: var(--text-3xs);
+    font-weight: 400;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .year-tick.major b { color: var(--ink); font-weight: 600; }
+
+  .entries { position: relative; height: 100%; }
+  .entry {
+    position: absolute;
+    width: 230px;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 200ms var(--ease-out-quart);
+  }
+  .entry:hover         { z-index: 3; }
+  .entry:focus-visible { z-index: 3; }
+  .entry.active        { z-index: 4; }
+  .entry-top { top: 0;   height: 186px; display: flex; flex-direction: column; justify-content: flex-end;   padding-bottom: 16px; }
+  .entry-bot { top: 194px; height: 186px; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 16px; }
+
+  .entry .card {
+    --card-ty: 0px;
+    --card-scale: 1;
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    padding: 12px 14px;
+    position: relative;
+    transform: translateY(var(--card-ty)) scale(var(--card-scale));
+    transition:
+      border-color 180ms var(--ease-out-quart),
+      background-color 180ms var(--ease-out-quart),
+      color 180ms var(--ease-out-quart),
+      transform 280ms var(--ease-out-quart);
+  }
+  .entry-top .card { transform-origin: bottom center; }
+  .entry-bot .card { transform-origin: top center; }
+  .entry:hover .card  { border-color: var(--ink); --card-ty: -2px; }
+  .entry:hover .leader { background: var(--ink); }
+  .entry:hover .dot    { transform: translateX(-50%) scale(1.3); }
+  .entry:focus-visible { outline: none; }
+  .entry:focus-visible .card {
+    border-color: var(--ink);
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .entry.active .card {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+    --card-scale: 1.08;
+  }
+  .entry.active .card .emp,
+  .entry.active .card .desc { color: oklch(75% 0.02 55); }
+
+  .entry .year-chip {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--text-3xs);
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 2px 10px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .entry.active .year-chip { color: var(--bg); border-color: var(--bg); }
+  .entry .title {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin: 0 0 2px;
+  }
+  .entry .emp {
+    font-family: var(--font-body);
+    font-size: var(--text-2xs);
+    color: var(--ink-3);
+    margin: 0 0 6px;
+    font-weight: 500;
+  }
+  .entry .desc {
+    font-family: var(--font-body);
+    font-size: var(--text-2xs);
+    line-height: 1.45;
+    color: var(--ink-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .entry .leader {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    background: var(--ink-3);
+    transition: background-color 180ms var(--ease-out-quart);
+  }
+  .entry.active .leader { background: var(--accent); }
+  .entry-top .leader { bottom: -4px; height: 20px; }
+  .entry-bot .leader { top: -4px;    height: 20px; }
+
+  .entry .dot {
+    position: absolute;
+    left: 50%;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1.5px solid var(--ink);
+    transform: translateX(-50%);
+    transition: background-color 180ms var(--ease-out-quart),
+                border-color 180ms var(--ease-out-quart),
+                transform 200ms var(--ease-out-quart);
+  }
+  .entry.active .dot { background: var(--accent); border-color: var(--accent); }
+  .entry-top .dot { bottom: -8.5px; }
+  .entry-bot .dot { top: -8.5px; }
+
+  /* ── detail panel ─────────────────────────────── */
+  .detail {
+    background: var(--bg);
+    border-top: 1px solid var(--line-soft);
+    padding: 20px 0 0;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .detail-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-right: 1px solid var(--line-soft);
+    padding-right: 24px;
+  }
+  .detail-side .period {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 600;
+    padding: 3px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    width: fit-content;
+    font-variant-numeric: tabular-nums;
+  }
+  .detail-side h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--text-2xl);
+    line-height: 0.98;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    margin: 10px 0 2px;
+  }
+  .detail-side .employer {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+  .detail-side .duration {
+    font-family: var(--font-body);
+    font-size: var(--text-2xs);
+    color: var(--ink-3);
+    margin-top: 4px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .detail-body p.lead {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+    text-wrap: pretty;
+    font-weight: 400;
+    max-width: 65ch;
+  }
+  .detail-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2;
+    column-gap: 32px;
+  }
+  .detail-body li {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+    color: var(--ink-2);
+    padding: 4px 0 4px 14px;
+    position: relative;
+    break-inside: avoid;
+    border-bottom: 1px solid var(--line-soft);
+    font-weight: 400;
+  }
+  .detail-body li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 6px; height: 1px;
+    background: var(--ink);
+  }
+
+  /* ── footer / quarter 4 ──────────────────────────── */
+  .foot {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding: 24px 0 0;
+    border-top: 2px solid var(--ink);
+  }
+  .foot-col h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 800;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .foot-col p, .foot-col a {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--ink-2);
+    line-height: 1.55;
+    margin: 0 0 4px;
+    display: block;
+    text-decoration: none;
+  }
+  .foot-col a {
+    border-bottom: 1px solid transparent;
+    transition: border-color 180ms var(--ease-out-quart),
+                color 180ms var(--ease-out-quart);
+    width: fit-content;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .foot-col a:hover,
+  .foot-col a:focus-visible { color: var(--accent-ink); border-bottom-color: var(--accent-ink); }
+  .foot-col a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .foot-col a .arrow {
+    display: inline-block;
+    transition: transform 200ms var(--ease-out-quart);
+    margin-left: 4px;
+  }
+  .foot-col a:hover .arrow,
+  .foot-col a:focus-visible .arrow { transform: translate(2px, -2px); }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink-2);
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+  .brand .bar { width: 24px; height: 1px; background: var(--ink-2); }
+
+  /* ── detail panel empty state ─────────────────── */
+  .detail-empty {
+    grid-column: 1 / -1;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+    padding: 4px 0 8px;
+    letter-spacing: 0.01em;
+  }
+  .detail-empty .arrow { display: inline-block; margin-left: 6px; color: var(--accent-ink); }
+
+  /* ── delight: load + panel transitions ───────────── */
+  .entry  { animation: cardIn  400ms var(--ease-out-quart) 160ms both; }
+  .detail.appear { animation: panelIn 240ms var(--ease-out-quart) both; }
+  @keyframes cardIn  { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes panelIn { from { opacity: 0.35; } to { opacity: 1; } }
+
+  /* ── :active press feedback ──────────────────────── */
+  .entry:active .card     { --card-ty: 0px; transition-duration: 80ms; }
+  .foot-col a:active      { opacity: 0.7; }
+
+  /* ── path 2: neighbor desaturation when any card is active ── */
+  .entry { transition: opacity 240ms var(--ease-out-quart); }
+  .entries:has(.entry.active) .entry:not(.active)         { opacity: 0.55; }
+  .entries:has(.entry.active) .entry:not(.active):hover   { opacity: 1; }
+
+  /* ── responsive ──────────────────────── */
+  @media (max-width: 760px) {
+    .app { padding: 24px 20px; gap: 24px; }
+    .header-main { flex-direction: column; gap: 20px; }
+    .portrait { width: 128px; height: 128px; }
+    .name { max-width: none; }
+    .timeline-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .detail { grid-template-columns: 1fr; gap: 20px; padding-top: 16px; }
+    .detail-side {
+      border-right: none;
+      border-bottom: 1px solid var(--line-soft);
+      padding-right: 0;
+      padding-bottom: 16px;
+    }
+    .detail-body ul { columns: 1; }
+    .foot { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .foot-col p, .foot-col a { padding: 8px 0; margin-bottom: 0; }
+  }
+  @media (max-width: 440px) {
+    .foot { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ── header ───────────────────────────── -->
+  <header class="header">
+    <div class="header-main">
+      <img class="portrait" src="me.png" alt="Portrait of Ettienne Mans" width="168" height="168" />
+      <div class="id">
+        <h1 class="name">Ettienne Mans<br/><span class="name-tagline">Technology &amp; <em>Experience.</em></span></h1>
+        <p class="role">Technology leader &amp; <em>senior business analyst</em> — 25+ years across advertising tech, engineering, manufacturing, market research, retail and mobile. Based in Auckland, NZ.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── timeline ───────────────────────────── -->
+  <section class="timeline-wrap" aria-labelledby="experienceLabel">
+    <div class="timeline-bar">
+      <span id="experienceLabel" class="section-label">Experience</span>
+      <span class="hint">drag to scroll · <span class="kbd">←</span> <span class="kbd">→</span> to step · click for detail</span>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="track" id="track">
+        <div class="spine"></div>
+        <div class="year-grid" id="yearGrid"></div>
+        <div class="entries" id="entries"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── detail ───────────────────────────── -->
+  <section class="detail" id="detail" aria-live="polite">
+    <div class="detail-empty">Click a role on the timeline<span class="arrow">→</span></div>
+  </section>
+
+  <!-- ── footer ──────────────────────────────── -->
+  <footer class="foot">
+    <div class="foot-col">
+      <h4>General</h4>
+      <div class="brand"><span class="bar"></span><span>guitar · photography · IoT · science</span></div>
+      <p style="margin-top:10px;">English &amp; Afrikaans (read · write · speak)</p>
+      <p>Microsoft Certified Professional · Agile42 Scrum Master · JCSE Software Engineering (Wits)</p>
+    </div>
+    <div class="foot-col">
+      <h4>Profiles</h4>
+      <a href="https://www.linkedin.com/in/ettienne" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+      <a href="https://github.com/EttienneM" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <!-- TODO: confirm email address -->
+      <a href="mailto:ettienne@convoy.co.za">ettienne@convoy.co.za</a>
+      <!-- TODO: confirm phone number (NZ format looks off) -->
+      <a href="tel:+6403794493">+64 (0) 379 4493 27</a>
+    </div>
+    <div class="foot-col">
+      <h4>Colophon</h4>
+      <p>Set in Big Shoulders Display &amp; Figtree. Dates visualised on a continuous axis — no filler.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ── data ────────────────────────────────────────────────── */
+const entries = [
+  {
+    start: "1998-09", end: "2000-09",
+    title: "Junior Technical Architect", employer: "Affinity Logic",
+    blurb: "Oracle data warehousing, SQL scripting and BI reporting; built automation for daily data-warehouse operations.",
+    lead: "Cut my teeth on Oracle, SQL*Plus and Cognos — wiring up the plumbing of a data warehouse and learning how data actually flows through a business.",
+    bullets: [
+      "Daily and weekly Oracle data loads",
+      "SQL*Plus extraction scripts",
+      "BI reports in Cognos Impromptu",
+      "Automation for warehouse operations",
+      "ConnectRemote middleware administration",
+      "Middleware-activity reporting"
+    ]
+  },
+  {
+    start: "2000-08", end: "2003-08",
+    title: "Senior Developer", employer: "Meitron",
+    blurb: "Full SDLC on thermal-efficiency software running in 10 coal-fired power stations. VB3→VB6 upgrade, Excel integration, early GSM R&D.",
+    lead: "Led a small team modernising a Power Station Thermal Efficiency System — the work earned Meitron Eskom's Gold Plant Performance Award.",
+    bullets: [
+      "Full software development life cycle",
+      "Upgraded Thermal Efficiency System VB3 → VB6",
+      "Excel integration for reporting",
+      "R&D for a GSM text-messaging system",
+      "Led a dev team of three",
+      "Eskom Gold Plant Performance Award (10 stations)"
+    ]
+  },
+  {
+    start: "2003-09", end: "2007-09",
+    title: "Senior Systems Analyst", employer: "Nielsen",
+    blurb: "Maintained and evolved three systems across Nielsen's Retail and Advertising divisions; led client consultations for new deliverables.",
+    lead: "Owned analysis, design and development across three systems in Retail and Advertising — the first of two tours at Nielsen.",
+    bullets: [
+      "Maintenance of three Retail/Advertising systems",
+      "Requirement analysis and design",
+      "New-deliverable client consultations",
+      "Cross-domain systems integration"
+    ]
+  },
+  {
+    start: "2007-11", end: "2008-11",
+    title: "Senior Systems Analyst", employer: "Gijima",
+    blurb: "Customer requirements, solution proposals and hands-on database design across SQL CE / SQL Server 2000 & 2005. Authored team dev standards.",
+    lead: "Moved into a broader solutioning role — spec, propose, build — and wrote the standards & practices the dev team worked to.",
+    bullets: [
+      "Customer requirement analysis",
+      "Client liaison & solution proposals",
+      "New-technology research & evaluation",
+      "DB design on SQL CE / SQL Server 2000 & 2005",
+      "Authored dev standards & practices"
+    ]
+  },
+  {
+    start: "2008-12", end: "2009-03",
+    title: "Senior Systems Analyst", employer: "Nielsen (return)",
+    blurb: "Brief return to Nielsen SA — cut short when Nielsen International restructured in-house IT globally.",
+    lead: "A short second stint. Contacted and convinced by Nielsen SA to rejoin the team I'd left a year earlier — international had other plans for in-house IT.",
+    bullets: [
+      "Re-joined Nielsen SA by invitation",
+      "Role ended with global IT restructure",
+      "Handover & team transition"
+    ]
+  },
+  {
+    start: "2009-03", end: "2011-11",
+    title: "Head of Professional Services", employer: "NXT",
+    blurb: "Led scoping and delivery across web, mobile and social. Sat on NXT & TBWA/Tequila ops committees; work won IAC awards.",
+    lead: "Stepped up to run Professional Services — scoping, pricing and delivering web, mobile and social work; two projects took IAC awards.",
+    bullets: [
+      "Client scoping sessions & requirement analysis",
+      "System design & business-requirement writing",
+      "Project scheduling, management & costing",
+      "Web, mobile & social scoping",
+      "Web-usage analytics for clients",
+      "Ops committees: NXT & TBWA/Tequila",
+      "IAC — Outstanding Website",
+      "IAC — Best Bank Integrated Ad Campaign"
+    ]
+  },
+  {
+    start: "2011-11", end: "2016-02",
+    title: "Business Analyst", employer: "Innosys (BBD)",
+    blurb: "Requirements-to-delivery across distributed and co-sourced international dev teams. Process modelling, agile PM, dev-team management.",
+    lead: "Bridged business and engineering across geographically distributed and sometimes co-sourced teams — translating requirements into shippable work.",
+    bullets: [
+      "Acquire, interpret, document business requirements",
+      "Translate into workable dev specifications",
+      "Business Process Modelling",
+      "Business Requirement Writing",
+      "Agile Project Management",
+      "Development Team Management",
+      "Distributed (international) team management",
+      "Co-sourced team management"
+    ]
+  },
+  {
+    start: "2016-02", end: "2018-12",
+    title: "BA / Software Development Manager", employer: "Popimedia (Publicis)",
+    blurb: "Led 11 developers (7 offshore). Analysis, prioritisation, QA and strategic tech roadmapping for the business.",
+    lead: "Managed an eleven-person team, set the technology roadmap, and made sure privacy, security and strategic fit stayed on the table alongside delivery.",
+    bullets: [
+      "Managed 11 developers (7 offshore)",
+      "Analyse, design & prioritise requirements",
+      "Translate requirements into actionable tasks",
+      "System quality assurance",
+      "Lead day-to-day tech operations",
+      "Guide strategic tech decisions & allocation",
+      "Strategic technology roadmap",
+      "Evaluate new tech & systems for fit",
+      "Privacy & security process oversight",
+      "Support the mgmt team with tech insight"
+    ]
+  },
+  {
+    start: "2018-12", end: "2021-02",
+    title: "Chief Technology Officer", employer: "Popimedia (Publicis)",
+    blurb: "Aligned engineering with business objectives. Adopted DORA, ran company-wide OKRs, owned team development, training and recruiting.",
+    lead: "Promoted into the CTO seat — aligning software engineering to business objectives, tracking the horizon, and pulling DORA and company-wide OKRs into the operating model.",
+    bullets: [
+      "Align engineering with business objectives",
+      "Track tech trends against company goals",
+      "Adopt DORA framework & best practices",
+      "Improve team productivity & quality",
+      "Team-member development & training",
+      "Recruiting",
+      "Implement company-wide OKRs"
+    ]
+  },
+  {
+    start: "2021-03", end: "2023-06",
+    title: "Senior Business Analyst", employer: "Datacom",
+    blurb: "Requirements, functional specs and cross-discipline collaboration as Scrum Master on delivery teams.",
+    lead: "Hands-on BA and Scrum Master — requirements through functional specs, working across disciplines to ship.",
+    bullets: [
+      "Gather & analyse user requirements",
+      "Functional specifications for design & build",
+      "Cross-discipline collaboration",
+      "Scrum master"
+    ]
+  },
+  {
+    start: "2021-03", end: "2023-06",
+    title: "Senior Business Analyst / Team Lead", employer: "Entelect",
+    blurb: "Client liaison, SoWs, budgets and forecasting while leading a 6-engineer team. Requirements, specs, UX/UI, delivery and scrum mastery.",
+    lead: "Wore the BA, team-lead and scrum-master hats at once — client liaison and SoWs up front, delivery management and UX/UI through to the finish line.",
+    bullets: [
+      "Client liaison & account management",
+      "Statements of work",
+      "Project planning & delivery management",
+      "Project budgets & forecast",
+      "Team management — 6 software engineers",
+      "Gather & analyse user requirements",
+      "Functional specifications",
+      "UX & UI design",
+      "Scrum master"
+    ]
+  }
+];
+
+/* ── timeline layout ─────────────────────────────────────── */
+const YEAR_START = 1998;
+const YEAR_END = 2024;
+const YEAR_PX = 150;
+const LEFT_PAD = 48;
+const CARD_W = () => parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-w')) || 230;
+
+function monthToX(ym) {
+  const [y, m] = ym.split("-").map(Number);
+  const frac = y + (m - 1) / 12;
+  return LEFT_PAD + (frac - YEAR_START) * YEAR_PX;
+}
+
+function fmtRange(start, end) {
+  const [ys, ms] = start.split("-").map(Number);
+  const [ye, me] = end.split("-").map(Number);
+  const MO = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return `${MO[ms-1]} ${ys} — ${MO[me-1]} ${ye}`;
+}
+
+function duration(start, end) {
+  const [ys, ms] = start.split("-").map(Number);
+  const [ye, me] = end.split("-").map(Number);
+  const months = (ye - ys) * 12 + (me - ms);
+  const yrs = Math.floor(months / 12);
+  const rem = months % 12;
+  const parts = [];
+  if (yrs) parts.push(`${yrs}y`);
+  if (rem) parts.push(`${rem}m`);
+  if (!parts.length) parts.push(`${months}m`);
+  return parts.join(" ");
+}
+
+/* ── render ─────────────────────────────────────────────── */
+function renderYears() {
+  const grid = document.getElementById('yearGrid');
+  grid.innerHTML = '';
+  for (let y = YEAR_START; y <= YEAR_END; y++) {
+    const x = (y - YEAR_START) * YEAR_PX;
+    const el = document.createElement('div');
+    el.className = 'year-tick' + (y % 5 === 0 ? ' major' : '');
+    el.style.left = x + 'px';
+    el.innerHTML = `<span></span><b>${y % 5 === 0 || y === YEAR_END ? y : "'" + String(y).slice(2)}</b>`;
+    grid.appendChild(el);
+  }
+  document.getElementById('track').style.width = (YEAR_END - YEAR_START) * YEAR_PX + LEFT_PAD * 2 + 'px';
+}
+
+function renderEntries() {
+  const host = document.getElementById('entries');
+  host.innerHTML = '';
+  const lanes = { top: [], bot: [] };
+  entries.forEach((e, i) => {
+    const xStart = monthToX(e.start);
+    const xEnd = monthToX(e.end);
+    const xMid = (xStart + xEnd) / 2;
+    const cardW = CARD_W();
+    const left = xMid - cardW / 2;
+    const right = left + cardW;
+
+    let side = i % 2 === 0 ? 'top' : 'bot';
+    const overlapsOn = (s) => lanes[s].some(r => !(right < r.left - 8 || left > r.right + 8));
+    if (overlapsOn(side)) side = side === 'top' ? 'bot' : 'top';
+    if (overlapsOn(side)) side = side === 'top' ? 'bot' : 'top';
+    lanes[side].push({ left, right });
+
+    const el = document.createElement('div');
+    el.className = 'entry ' + (side === 'top' ? 'entry-top' : 'entry-bot');
+    el.style.left = left + 'px';
+    el.style.width = cardW + 'px';
+    el.dataset.index = i;
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', `${e.title} at ${e.employer}, ${fmtRange(e.start, e.end)}. Press Enter for details.`);
+    el.innerHTML = `
+      <div class="card">
+        <div class="year-chip">${e.start.slice(0,4)} – ${e.end.slice(0,4)} · ${duration(e.start, e.end)}</div>
+        <div class="title">${e.title}</div>
+        <div class="emp">${e.employer}</div>
+        <div class="desc">${e.blurb}</div>
+      </div>
+      <div class="leader" style="left:${xMid - left}px"></div>
+      <div class="dot" style="left:${xMid - left}px"></div>
+    `;
+    el.addEventListener('click', () => select(i));
+    el.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        select(i);
+      }
+    });
+    host.appendChild(el);
+  });
+}
+
+/* ── spring-driven scroll (Path 2 overdrive) ───────────── */
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let scrollAnim = null;
+function cancelSpring() {
+  if (scrollAnim) { cancelAnimationFrame(scrollAnim); scrollAnim = null; }
+}
+function springScroll(tl, target) {
+  cancelSpring();
+  const max = Math.max(0, tl.scrollWidth - tl.clientWidth);
+  const to = Math.max(0, Math.min(max, target));
+  if (reducedMotion) { tl.scrollLeft = to; return; }
+
+  let pos = tl.scrollLeft;
+  let vel = 0;
+  const stiffness = 170, damping = 22, mass = 1;
+  let last = performance.now();
+
+  function step(now) {
+    const dt = Math.min(0.032, (now - last) / 1000);
+    last = now;
+    const spring = -stiffness * (pos - to);
+    const damp = -damping * vel;
+    vel += ((spring + damp) / mass) * dt;
+    pos += vel * dt;
+    tl.scrollLeft = pos;
+    if (Math.abs(vel) < 0.5 && Math.abs(pos - to) < 0.5) {
+      tl.scrollLeft = to;
+      scrollAnim = null;
+      return;
+    }
+    scrollAnim = requestAnimationFrame(step);
+  }
+  scrollAnim = requestAnimationFrame(step);
+}
+
+/* ── detail panel ─────────────────────────────────────── */
+let currentIdx = -1;
+function select(i, { instant = false } = {}) {
+  currentIdx = i;
+  document.querySelectorAll('.entry').forEach(el =>
+    el.classList.toggle('active', Number(el.dataset.index) === i)
+  );
+  const e = entries[i];
+  const detail = document.getElementById('detail');
+  detail.innerHTML = `
+    <div class="detail-side">
+      <div class="period">${fmtRange(e.start, e.end)}</div>
+      <h2>${e.title}</h2>
+      <div class="employer">${e.employer}</div>
+      <div class="duration">duration · ${duration(e.start, e.end)}</div>
+    </div>
+    <div class="detail-body">
+      <p class="lead">${e.blurb}</p>
+      <ul>${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+    </div>
+  `;
+  detail.classList.remove('appear');
+  void detail.offsetWidth;
+  detail.classList.add('appear');
+  const el = document.querySelector(`.entry[data-index="${i}"]`);
+  if (el) {
+    const tl = document.getElementById('timeline');
+    const elLeft = parseFloat(el.style.left);
+    const cardCenter = elLeft + el.offsetWidth / 2;
+    const viewCenter = tl.scrollLeft + tl.clientWidth / 2;
+    const tolerance = tl.clientWidth * 0.15;
+    const target = cardCenter - tl.clientWidth / 2;
+
+    if (instant) {
+      tl.scrollLeft = Math.max(0, Math.min(tl.scrollWidth - tl.clientWidth, target));
+    } else if (Math.abs(cardCenter - viewCenter) > tolerance) {
+      springScroll(tl, target);
+    }
+  }
+}
+
+/* ── drag to scroll ─────────────────────────────────── */
+function wireDrag() {
+  const tl = document.getElementById('timeline');
+  let down = false, sx = 0, sl = 0;
+  tl.addEventListener('mousedown', e => {
+    if (e.target.closest('.entry')) return;
+    cancelSpring();
+    down = true; sx = e.pageX; sl = tl.scrollLeft;
+    tl.classList.add('dragging');
+  });
+  window.addEventListener('mouseup', () => { down = false; tl.classList.remove('dragging'); });
+  window.addEventListener('mousemove', e => {
+    if (!down) return;
+    tl.scrollLeft = sl - (e.pageX - sx);
+  });
+  tl.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) { cancelSpring(); return; }
+    if (e.shiftKey || Math.abs(e.deltaY) > 0) {
+      cancelSpring();
+      tl.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
+  window.addEventListener('keydown', e => {
+    if (e.target.closest('input, textarea, select')) return;
+    if (e.key === 'ArrowRight') select(Math.min(entries.length - 1, currentIdx + 1));
+    if (e.key === 'ArrowLeft')  select(Math.max(0, currentIdx - 1));
+  });
+}
+
+/* ── boot ─────────────────────────── */
+renderYears();
+renderEntries();
+wireDrag();
+requestAnimationFrame(() => {
+  const tl = document.getElementById('timeline');
+  tl.scrollLeft = tl.scrollWidth;
+});
+
+/* ── quiet hello for anyone reading the source ─── */
+console.log(
+  '%c Thanks for reading the source. ',
+  'background: #0a0a0a; color: #ffffff; font: 600 13px/1.5 ui-sans-serif, system-ui, sans-serif; padding: 4px 8px;'
+);
+console.log(
+  '%cThe timeline uses a continuous-month axis — every card is placed by its actual start/end dates. Contact details live in the footer.',
+  'color: #666; font: 400 12px/1.5 ui-sans-serif, system-ui, sans-serif;'
+);
+</script>
+</body>
+</html>
