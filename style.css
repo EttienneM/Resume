@@ -562,10 +562,11 @@ body { min-height: 100vh; overflow-x: hidden; }
   letter-spacing: 0.01em;
   margin: 0;
 }
-.detail-empty-cta .arrow {
-  display: inline-block;
-  margin-left: 6px;
+.detail-empty-cta i {
+  margin-left: 4px;
   color: var(--accent-ink);
+  font-size: 1.1em;
+  vertical-align: -1px;
 }
 .detail-empty-bio {
   columns: 2;
