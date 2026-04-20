@@ -6,7 +6,7 @@
 <title>Ettienne Mans — Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;800;900&family=Figtree:ital,wght@0,400;0,500;0,600;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:ital,wght@0,400;0,500;0,600;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
   <!-- ── header ───────────────────────────── -->
   <header class="header">
     <div class="header-main">
-      <img class="portrait" src="me.png" alt="Portrait of Ettienne Mans" width="168" height="168" />
+      <img class="portrait" src="me.png" alt="Portrait of Ettienne Mans" width="176" height="220" />
       <div class="id">
         <h1 class="name">Ettienne Mans<br/><span class="name-tagline">Technology &amp; <em>Experience.</em></span></h1>
         <p class="role">Technology leader &amp; <em>senior business analyst</em> — 25+ years across advertising tech, engineering, manufacturing, market research, retail and mobile. Based in Auckland, NZ.</p>
@@ -33,6 +33,7 @@
     <div class="timeline" id="timeline">
       <div class="track" id="track">
         <div class="spine"></div>
+        <div class="spine-bars" id="spineBars"></div>
         <div class="year-grid" id="yearGrid"></div>
         <div class="entries" id="entries"></div>
       </div>
@@ -69,12 +70,12 @@
       <h4>Contact</h4>
       <!-- TODO: confirm email address -->
       <a href="mailto:ettienne@convoy.co.za">ettienne@convoy.co.za</a>
-      <!-- TODO: confirm phone number (NZ format looks off) -->
-      <a href="tel:+6403794493">+64 (0) 379 4493 27</a>
+      <p>Phone on request</p>
     </div>
     <div class="foot-col">
       <h4>Colophon</h4>
-      <p>Set in Big Shoulders Display &amp; Figtree. Dates visualised on a continuous axis — no filler.</p>
+      <p>Built with Claude Code, directed by the <a href="https://impeccable.style/" target="_blank" rel="noopener">impeccable</a> design skill.</p>
+      <p>Set in Anton &amp; Figtree. Dates visualised on a continuous axis — no filler.</p>
     </div>
   </footer>
 </div>
@@ -292,14 +293,22 @@ function renderYears() {
 
 function renderEntries() {
   const host = document.getElementById('entries');
+  const bars = document.getElementById('spineBars');
   host.innerHTML = '';
+  bars.innerHTML = '';
   const lanes = { top: [], bot: [] };
   entries.forEach((e, i) => {
     const xStart = monthToX(e.start);
     const xEnd = monthToX(e.end);
-    const xMid = (xStart + xEnd) / 2;
+
+    const bar = document.createElement('div');
+    bar.className = 'spine-bar';
+    bar.dataset.index = i;
+    bar.style.left = (xStart - LEFT_PAD) + 'px';
+    bar.style.width = (xEnd - xStart) + 'px';
+    bars.appendChild(bar);
     const cardW = CARD_W();
-    const left = xMid - cardW / 2;
+    const left = xStart;
     const right = left + cardW;
 
     let side = i % 2 === 0 ? 'top' : 'bot';
@@ -323,8 +332,8 @@ function renderEntries() {
         <div class="emp">${e.employer}</div>
         <div class="desc">${e.blurb}</div>
       </div>
-      <div class="leader" style="left:${xMid - left}px"></div>
-      <div class="dot" style="left:${xMid - left}px"></div>
+      <div class="leader" style="left:0"></div>
+      <div class="dot" style="left:0"></div>
     `;
     el.addEventListener('click', () => select(i));
     el.addEventListener('keydown', (ev) => {
@@ -379,6 +388,11 @@ function select(i, { instant = false } = {}) {
   document.querySelectorAll('.entry').forEach(el =>
     el.classList.toggle('active', Number(el.dataset.index) === i)
   );
+  document.querySelectorAll('.spine-bar').forEach(el => {
+    const on = Number(el.dataset.index) === i;
+    el.classList.toggle('active', on);
+    if (on) el.parentElement.appendChild(el);
+  });
   const e = entries[i];
   const detail = document.getElementById('detail');
   detail.innerHTML = `
