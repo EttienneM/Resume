@@ -1,0 +1,182 @@
+[
+  {
+    "start": "1998-09",
+    "end": "2000-09",
+    "title": "Junior Technical Architect",
+    "employer": "Affinity Logic",
+    "blurb": "Oracle data warehousing, SQL scripting and BI reporting; built automation for daily data-warehouse operations.",
+    "lead": "Cut my teeth on Oracle, SQL*Plus and Cognos — wiring up the plumbing of a data warehouse and learning how data actually flows through a business.",
+    "bullets": [
+      "Daily and weekly Oracle data loads",
+      "SQL*Plus extraction scripts",
+      "BI reports in Cognos Impromptu",
+      "Automation for warehouse operations",
+      "ConnectRemote middleware administration",
+      "Middleware-activity reporting"
+    ]
+  },
+  {
+    "start": "2000-08",
+    "end": "2003-08",
+    "title": "Senior Developer",
+    "employer": "Meitron",
+    "blurb": "Full SDLC on thermal-efficiency software running in 10 coal-fired power stations. VB3→VB6 upgrade, Excel integration, early GSM R&D.",
+    "lead": "Led a small team modernising a Power Station Thermal Efficiency System — the work earned Meitron Eskom's Gold Plant Performance Award.",
+    "bullets": [
+      "Full software development life cycle",
+      "Upgraded Thermal Efficiency System VB3 → VB6",
+      "Excel integration for reporting",
+      "R&D for a GSM text-messaging system",
+      "Led a dev team of three",
+      "Eskom Gold Plant Performance Award (10 stations)"
+    ]
+  },
+  {
+    "start": "2003-09",
+    "end": "2007-09",
+    "title": "Senior Systems Analyst",
+    "employer": "Nielsen",
+    "blurb": "Maintained and evolved three systems across Nielsen's Retail and Advertising divisions; led client consultations for new deliverables.",
+    "lead": "Owned analysis, design and development across three systems in Retail and Advertising — the first of two tours at Nielsen.",
+    "bullets": [
+      "Maintenance of three Retail/Advertising systems",
+      "Requirement analysis and design",
+      "New-deliverable client consultations",
+      "Cross-domain systems integration"
+    ]
+  },
+  {
+    "start": "2007-11",
+    "end": "2008-11",
+    "title": "Senior Systems Analyst",
+    "employer": "Gijima",
+    "blurb": "Customer requirements, solution proposals and hands-on database design across SQL CE / SQL Server 2000 & 2005. Authored team dev standards.",
+    "lead": "Moved into a broader solutioning role — spec, propose, build — and wrote the standards & practices the dev team worked to.",
+    "bullets": [
+      "Customer requirement analysis",
+      "Client liaison & solution proposals",
+      "New-technology research & evaluation",
+      "DB design on SQL CE / SQL Server 2000 & 2005",
+      "Authored dev standards & practices"
+    ]
+  },
+  {
+    "start": "2008-12",
+    "end": "2009-03",
+    "title": "Senior Systems Analyst",
+    "employer": "Nielsen (return)",
+    "blurb": "Brief return to Nielsen SA — cut short when Nielsen International restructured in-house IT globally.",
+    "lead": "A short second stint. Contacted and convinced by Nielsen SA to rejoin the team I'd left a year earlier — international had other plans for in-house IT.",
+    "bullets": [
+      "Re-joined Nielsen SA by invitation",
+      "Role ended with global IT restructure",
+      "Handover & team transition"
+    ]
+  },
+  {
+    "start": "2009-03",
+    "end": "2011-11",
+    "title": "Head of Professional Services",
+    "employer": "NXT",
+    "blurb": "Led scoping and delivery across web, mobile and social. Sat on NXT & TBWA/Tequila ops committees; work won IAC awards.",
+    "lead": "Stepped up to run Professional Services — scoping, pricing and delivering web, mobile and social work; two projects took IAC awards.",
+    "bullets": [
+      "Client scoping sessions & requirement analysis",
+      "System design & business-requirement writing",
+      "Project scheduling, management & costing",
+      "Web, mobile & social scoping",
+      "Web-usage analytics for clients",
+      "Ops committees: NXT & TBWA/Tequila",
+      "IAC — Outstanding Website",
+      "IAC — Best Bank Integrated Ad Campaign"
+    ]
+  },
+  {
+    "start": "2011-11",
+    "end": "2016-02",
+    "title": "Business Analyst",
+    "employer": "Innosys (BBD)",
+    "blurb": "Requirements-to-delivery across distributed and co-sourced international dev teams. Process modelling, agile PM, dev-team management.",
+    "lead": "Bridged business and engineering across geographically distributed and sometimes co-sourced teams — translating requirements into shippable work.",
+    "bullets": [
+      "Acquire, interpret, document business requirements",
+      "Translate into workable dev specifications",
+      "Business Process Modelling",
+      "Business Requirement Writing",
+      "Agile Project Management",
+      "Development Team Management",
+      "Distributed (international) team management",
+      "Co-sourced team management"
+    ]
+  },
+  {
+    "start": "2016-02",
+    "end": "2018-12",
+    "title": "BA / Software Development Manager",
+    "employer": "Popimedia (Publicis)",
+    "blurb": "Led 11 developers (7 offshore). Analysis, prioritisation, QA and strategic tech roadmapping for the business.",
+    "lead": "Managed an eleven-person team, set the technology roadmap, and made sure privacy, security and strategic fit stayed on the table alongside delivery.",
+    "bullets": [
+      "Managed 11 developers (7 offshore)",
+      "Analyse, design & prioritise requirements",
+      "Translate requirements into actionable tasks",
+      "System quality assurance",
+      "Lead day-to-day tech operations",
+      "Guide strategic tech decisions & allocation",
+      "Strategic technology roadmap",
+      "Evaluate new tech & systems for fit",
+      "Privacy & security process oversight",
+      "Support the mgmt team with tech insight"
+    ]
+  },
+  {
+    "start": "2018-12",
+    "end": "2021-02",
+    "title": "Chief Technology Officer",
+    "employer": "Popimedia (Publicis)",
+    "blurb": "Aligned engineering with business objectives. Adopted DORA, ran company-wide OKRs, owned team development, training and recruiting.",
+    "lead": "Promoted into the CTO seat — aligning software engineering to business objectives, tracking the horizon, and pulling DORA and company-wide OKRs into the operating model.",
+    "bullets": [
+      "Align engineering with business objectives",
+      "Track tech trends against company goals",
+      "Adopt DORA framework & best practices",
+      "Improve team productivity & quality",
+      "Team-member development & training",
+      "Recruiting",
+      "Implement company-wide OKRs"
+    ]
+  },
+  {
+    "start": "2021-03",
+    "end": "2023-06",
+    "title": "Senior Business Analyst",
+    "employer": "Datacom",
+    "blurb": "Requirements, functional specs and cross-discipline collaboration as Scrum Master on delivery teams.",
+    "lead": "Hands-on BA and Scrum Master — requirements through functional specs, working across disciplines to ship.",
+    "bullets": [
+      "Gather & analyse user requirements",
+      "Functional specifications for design & build",
+      "Cross-discipline collaboration",
+      "Scrum master"
+    ]
+  },
+  {
+    "start": "2021-03",
+    "end": "2023-06",
+    "title": "Senior Business Analyst / Team Lead",
+    "employer": "Entelect",
+    "blurb": "Client liaison, SoWs, budgets and forecasting while leading a 6-engineer team. Requirements, specs, UX/UI, delivery and scrum mastery.",
+    "lead": "Wore the BA, team-lead and scrum-master hats at once — client liaison and SoWs up front, delivery management and UX/UI through to the finish line.",
+    "bullets": [
+      "Client liaison & account management",
+      "Statements of work",
+      "Project planning & delivery management",
+      "Project budgets & forecast",
+      "Team management — 6 software engineers",
+      "Gather & analyse user requirements",
+      "Functional specifications",
+      "UX & UI design",
+      "Scrum master"
+    ]
+  }
+]
